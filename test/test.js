@@ -12,10 +12,10 @@ describe('Native Proxy', function() {
 	suite(global.NativeProxy);
 });
 
-describe('ES5 Polyfill Proxy', function() {
-	this.timeout(11000);
-	suite(global.PolyfillProxy);
-});
+// describe('ES5 Polyfill Proxy', function() {
+// 	this.timeout(11000);
+// 	suite(global.PolyfillProxy);
+// });
 
 function suite(proxy) {
 

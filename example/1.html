@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./observable-slim.js"></script>
+    <script src="./vue.global.js"></script>
+
+    <div id="app">
+      <pre>
+        {{app}}
+      </pre>
+      <button @click="unshift">unshift</button>
+      <button @click="shift">shift</button>
+      <button @click="change">change</button>
+      <button @click="splice">splice</button>
+    </div>
+
+    <script>
+      const appVue = Vue.createApp({
+        setup() {
+          const app = [
+            {
+              code: 1,
+              name: 2,
+              array1: ["hello", "222"],
+              array2: [1, 2, 3],
+              array3: [1]
+            },
+          ];
+
+          const appProxy = ObservableSlim.create(app, false, (change) => {
+            if (change.length) {
+              console.log("change", change[0]);
+            }
+          });
+
+          const appReactive = Vue.reactive(appProxy);
+
+          return {
+            app: appReactive,
+            unshift: () => {
+              appReactive[0].array1.unshift("newnew");
+            },
+            shift: () => {
+              appReactive[0].array1.shift("newnew");
+            },
+            change: () => {
+              const [app] = appReactive;
+              // app.code = "2";
+              // app.array2.shift();
+              // app.code = "3";
+              // app.array1.unshift("newnew");
+              // appReactive.unshift("1");
+              // appReactive.splice(1, 0, 3);
+              // app.array2 = [];
+              app.array1[1] = "333";
+            },
+            splice: () => {
+              const [app] = appReactive;
+              app.array3.splice(0, 1);
+            }
+          };
+        },
+      });
+
+      appVue.mount("#app");
+    </script>
+  </body>
+</html>

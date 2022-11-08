@@ -1,12 +1,13 @@
 {
-  "name": "observable-slim",
+  "name": "@runafe/observable-slim",
   "description": "Observable Slim is a singleton that utilizes ES6 Proxies to observe changes made to an object and any nested children of that object. It is intended to assist with state management and one-way data binding.",
-  "version": "0.1.6",
+  "version": "1.0.0-beta.1",
   "main": "observable-slim.js",
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
+    "@rollup/plugin-typescript": "^9.0.2",
     "chai": "^4.3.6",
     "coveralls": "^3.1.1",
     "eslint": "^8.12.0",
@@ -18,14 +19,17 @@
     "gulp-useref": "^5.0.0",
     "mocha": "^9.2.2",
     "nyc": "^15.1.0",
-    "typescript": "^4.6.3"
+    "rollup": "^3.2.5",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "typescript": "^4.6.3",
+    "@types/node": "18.8.0"
   },
   "scripts": {
     "test": "nyc --reporter=html --reporter=text mocha",
     "lint": "eslint \"**/*.js\"",
     "lint:fix": "eslint \"**/*.js\" --fix",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "build": "gulp",
+    "build": "pnpm exec rollup --config ./rollup.config.ts",
     "type": "npx -p typescript tsc"
   },
   "babel": {

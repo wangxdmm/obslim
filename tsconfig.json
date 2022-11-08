@@ -1,11 +1,29 @@
 {
-	"include": ["observable-slim.js"],
-	"compilerOptions": {
-		"allowJs": true,
-		"declaration": true,
-		"declarationMap": false,
-		"emitDeclarationOnly": true,
-		"esModuleInterop": true,
-		"outDir": ""
-	}
+  "compilerOptions": {
+    "useDefineForClassFields": true,
+    "noImplicitThis": true,
+    "preserveValueImports": true,
+    "importsNotUsedAsValues": "error",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "target": "ES2018",
+    "module": "ESNext",
+    "noImplicitAny": false,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    // "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "./",
+    "types": ["node"],
+    "lib": ["ESNext"],
+  },
+  "include": ["observable-slim.ts", "rollup.config.ts"]
 }
